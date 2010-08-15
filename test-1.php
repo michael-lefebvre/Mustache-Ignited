@@ -83,7 +83,7 @@ $obj->notEmpty = true;
 $obj->isEmpty = false;
 
 //$complex->header = 'test';
-//$complex->item = array();
+$complex->item = array();
 
 $template = get_include_contents('test-1.html'); //'examples\complex\complex.mustache');//
 
