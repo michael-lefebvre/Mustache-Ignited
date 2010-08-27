@@ -15,28 +15,13 @@ class ci_mustache
 			return $contents;
 		}
 		
-		return false;
+		return $filename;
 	}
 	
-	private function is_template_file($template)
-	{	
-		$template_str = $this->get_include_contents($template);
-		
-		if($template_str)
-		{
-			return $template_str;
-		}
-		
-		return $template;
-	}
-	
-	public function render($template = null, $view = null, $partials = null)
-	{
-		// inlude template file as var
-		//$template = $this->get_include_contents($template);
-		
-		// check if template is an available file
-		$template = $this->is_template_file($template);
+	public function render($template, $view, $partials = null)
+	{		
+		// check if template is a file
+		$template = $this->get_include_contents($template);
 		
 		$m = new Mustache;
 		
