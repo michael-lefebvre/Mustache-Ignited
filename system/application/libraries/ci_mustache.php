@@ -4,18 +4,21 @@ require 'mustache/Mustache.php';
 
 class ci_mustache 
 {
-	private function get_include_contents($filename)
+	private function get_include_contents($template)
 	{
-		if(is_file($filename))
+		// Build file path based on CI's structure
+		$file_path = APPPATH.'/views/'.$template.'.php';
+		
+		if(is_file($file_path))
 		{
 			ob_start();
-			include($filename);
+			include($file_path);
 			$contents = ob_get_contents();
 			ob_end_clean();
 			return $contents;
 		}
 		
-		return $filename;
+		return $template;
 	}
 	
 	public function render($template, $view, $partials = null)
